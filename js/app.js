@@ -1,8 +1,9 @@
-const enviarBoton = document.querySelector('#enviar')
-const form = document.querySelector('#enviar-mail')
+const enviarBoton = document.querySelector('#enviar');
+const form = document.querySelector('#enviar-mail');
 const email = document.querySelector('#email');
 const asunto = document.querySelector('#asunto');
 const mensaje = document.querySelector('#mensaje');
+const vaciar = document.querySelector('#resetBtn');
 
 document.addEventListener('DOMContentLoaded', iniciarApp);
 
@@ -73,4 +74,22 @@ form.addEventListener('submit', (e) => {
     const spinner = document.querySelector('#spinner') 
     spinner.style.display = 'flex'
     console.log('enviado');
+
+    setTimeout(() => {
+        spinner.style.display = 'none';
+        const p = document.createElement('p');
+        p.textContent = 'El mensaje se envió correctamente';
+        // inserta el parrafo antes del spinner
+        form.insertBefore(p , spinner);
+        setTimeout (() => {
+            p.remove();
+        }, 5000)
+    }, 3000);
+})
+
+
+vaciar.addEventListener ('click', () => {
+    form.reset();
+    spinner.remove();
+    iniciarApp();
 })
