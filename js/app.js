@@ -66,3 +66,11 @@ function mostrarError (mensaje) {
          console.log('no pasaste');
      }
  })
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const spinner = document.querySelector('#spinner') 
+    spinner.style.display = 'flex'
+    console.log('enviado');
+})
